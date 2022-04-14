@@ -1,2 +1,0 @@
-# GlazeSure
-Uni Assginmetn Database
