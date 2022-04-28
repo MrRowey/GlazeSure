@@ -1,40 +1,36 @@
-﻿<?php
-
-?>
 <html>
-    <head>
-        <title>GlazeSure Internal Sale System</title>
-        <meta charset="UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <header>
-        <h1>GlazeSure Sales System</h1>
-    </header>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Logo</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/index.php">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/sales.php">Sales</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/quotes.php">Quotes</a>
-              </li>    
-            </ul>
-          </div>
-        </div>
-    </nav>
-    <main class="container p-5 my-3 text-white">
-        <h3>Internal Sales System for recoding all of GlazeSure Sales and quotes</h3>
-    </main>
+<head>
+<title>GlazeSure Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+  body {background-image: url(/img/loginbg.jpg); }
+</style>
+</head>
 
-</html>
+<body>
+
+<header class="w3-container w3-black">
+  <h1 class="w3-center">GlazeSure Internal Sale System</h1>
+</header>
+<div class="w3-container w3-half w3-margin-top">
+
+  <form class="w3-container w3-card-4 w3-white" action="/login.php" method="$_POST">
+    <h2 w3-center>Login</h2>
+    <?php if(isset($_GET['error'])) {?>
+      <p class="w3-pannel w3-red"><?php echo $_GET['error']; ?> </p>
+    <?php }?>
+    <label>Username</label>
+    <input class="w3-input" type="text" name="uname" style="width:90%" required><br>
+    <label>Password</label>
+    <input class="w3-input" type="password" name="password" style="width:90%" required><br>
+    <button class="w3-button w3-section w3-teal w3-ripple" type="submit"> Log in </button>
+    
+  </form>
+</div>
+<div class="w3-container w3-grey w3-bottom" >
+  <p class="w3-center">If you Do not have a login please see the Administrator.</p>
+</div>
+</body>
+
+</html> 

@@ -1,6 +1,6 @@
 /*================================================= 
 Title: Database for GlazeSure
-Version: 0.1
+Version: 0.2
 Date: 12/04/2022
 Server: MySQL via UniServerZ
 Database:
@@ -18,7 +18,31 @@ USE GlazeSure;
 
 -- Creating Database user
 
-CREATE USER 'sale-rep'@'localhost' IDENTIFIED BY 'Jqv*HIqhhQS_G8a7';
+-- Creating SaleRep PW: _/d6sBi!FHo@s[Lp
+CREATE USER 'SaleRep'@'%' IDENTIFIED WITH mysql_native_password BY '_/d6sBi!FHo@s[Lp';GRANT USAGE ON *.* TO 'SaleRep'@'%';ALTER USER 'SaleRep'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
+
+-- Creating SaleManager PW: 77!v(ZOzVlLSIAX1
+CREATE USER 'SaleManager'@'%' IDENTIFIED WITH mysql_native_password BY '77!v(ZOzVlLSIAX1';GRANT USAGE ON *.* TO 'SaleManager'@'%';ALTER USER 'SaleManager'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
+
+-- Creating SaleAdmin PW: 1*dH.9HN[Z9Rw.Qo
+CREATE USER 'SaleAdmin'@'%' IDENTIFIED WITH mysql_native_password BY '1*dH.9HN[Z9Rw.Qo';GRANT USAGE ON *.* TO 'SaleAdmin'@'%';ALTER USER 'SaleAdmin'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
+
+-- Setting User Database Accses
+
+-- SaleAdmin
+GRANT ALL PRIVILEGES ON `glazesure`.* TO 'SaleAdmin'@'%'; ALTER USER 'SaleAdmin'@'%' ; 
+-- SaleRep
+GRANT SELECT, INSERT, UPDATE ON `glazesure`.* TO 'SaleRep'@'%'; ALTER USER 'SaleRep'@'%' ; 
+-- SaleManager
+GRANT SELECT, INSERT, UPDATE, DELETE ON `glazesure`.* TO 'SaleManager'@'%'; ALTER USER 'SaleManager'@'%' ; 
+
+-- Creating Accounts Table
+CREATE TABLE accounts (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
+);
 
 -- Creating Sales Table
 CREATE TABLE sales (
@@ -26,27 +50,42 @@ CREATE TABLE sales (
     quote_id INT NOT NULL,
     job_type_id INT NOT NULL,
     sale_completed VARCHAR(100),
-    customer_id INT NOT NULL,
     notes VARCHAR(255)
 );
 
 -- Creating Quotes Table
-CREATE TABLE quotes (
+CREATE TABLE quote (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     num_of_windows INT,
     num_of_doors INT,
     window_type_id INT,
     door_type_id INT,
     cost INT,
+    customer_id INT NOT NULL,
+    sale_id INT NOT NULL,
     notes VARCHAR(255)
 );
 
 -- Creating Customer Table
 CREATE TABLE customer (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    cus_name VARCHAR(255),
-    company VARCHAR(255)
+    name VARCHAR(255),
+    company VARCHAR(255),
+    location_id INT NOT NULL
 );
+
+-- Creating location Table
+CREATE TABLE location (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    address VARCHAR(255) NOT NULL,
+    town_id INT NOT NULL
+);
+
+-- Creating town Table
+CREATE TABLE town (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255)
+)
 
 -- Creating Windows Table
 CREATE TABLE windows (
@@ -71,3 +110,7 @@ CREATE TABLE doors_to_quite (
    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
    type_name VARCHAR(255)
 );
+
+
+-- Create Admin Login
+
