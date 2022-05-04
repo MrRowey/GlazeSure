@@ -18,23 +18,9 @@ USE GlazeSure;
 
 -- Creating Database user
 
--- Creating SaleRep PW: _/d6sBi!FHo@s[Lp
-CREATE USER 'SaleRep'@'%' IDENTIFIED WITH mysql_native_password BY '_/d6sBi!FHo@s[Lp';GRANT USAGE ON *.* TO 'SaleRep'@'%';ALTER USER 'SaleRep'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
-
 -- Creating SaleManager PW: 77!v(ZOzVlLSIAX1
 CREATE USER 'SaleManager'@'%' IDENTIFIED WITH mysql_native_password BY '77!v(ZOzVlLSIAX1';GRANT USAGE ON *.* TO 'SaleManager'@'%';ALTER USER 'SaleManager'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
-
--- Creating SaleAdmin PW: 1*dH.9HN[Z9Rw.Qo
-CREATE USER 'SaleAdmin'@'%' IDENTIFIED WITH mysql_native_password BY '1*dH.9HN[Z9Rw.Qo';GRANT USAGE ON *.* TO 'SaleAdmin'@'%';ALTER USER 'SaleAdmin'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
-
--- Setting User Database Accses
-
--- SaleAdmin
-GRANT ALL PRIVILEGES ON `glazesure`.* TO 'SaleAdmin'@'%'; ALTER USER 'SaleAdmin'@'%' ; 
--- SaleRep
-GRANT SELECT, INSERT, UPDATE ON `glazesure`.* TO 'SaleRep'@'%'; ALTER USER 'SaleRep'@'%' ; 
--- SaleManager
-GRANT SELECT, INSERT, UPDATE, DELETE ON `glazesure`.* TO 'SaleManager'@'%'; ALTER USER 'SaleManager'@'%' ; 
+GRANT ALL PRIVILEGES ON `glazesure`.* TO 'SaleManager'@'%'; ALTER USER 'SaleRep'@'%' ; 
 
 -- Creating Accounts Table
 CREATE TABLE accounts (
@@ -119,5 +105,29 @@ CREATE TABLE Doors_To_Quote (
 );
 
 
--- Create Admin Login
+-- Insert Statemenst
+
+-- Window Types
+Insert into windows (ID, TypeName) VALUES ('1','Casement');
+Insert into windows (ID, TypeName) VALUES ('2','Boy & Bay');
+Insert into windows (ID, TypeName) VALUES ('3','Sliding Sash');
+
+-- Door Types
+Insert into doors (ID, TypeName) VALUES ('1','Residential');
+Insert into doors (ID, TypeName) VALUES ('2','Composite');
+Insert into doors (ID, TypeName) VALUES ('3','French');
+Insert into doors (ID, TypeName) VALUES ('4','Patio');
+Insert into doors (ID, TypeName) VALUES ('5','Bifold');
+Insert into doors (ID, TypeName) VALUES ('6','Patio Sliding');
+
+-- Towns
+Insert into Town (ID, Name) VALUES ('1','Ludlow');
+Insert into Town (ID, Name) VALUES ('2','Shrewsbury');
+Insert into Town (ID, Name) VALUES ('3','Church Stretton');
+Insert into Town (ID, Name) VALUES ('4','Oswestry');
+Insert into Town (ID, Name) VALUES ('5','Much Wenlock');
+Insert into Town (ID, Name) VALUES ('6','Market Drayton');
+Insert into Town (ID, Name) VALUES ('7','Craven Arms');
+Insert into Town (ID, Name) VALUES ('8',"Bishop's Castle");
+
 

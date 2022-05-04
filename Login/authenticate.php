@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../dblink.php');
+include('../dbconfig.php');
 
 if (!isset($_POST['username'], $_POST['password'])) {
     exit('Please enter your Username and Password');
@@ -23,13 +23,13 @@ if ($stmt = $conn->prepare('SELECT id, password FROM accounts WHERE username = ?
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
-            header('Location: ../SaleRep/RepOverview.php');
+            header('Location: ../Login/home.php');
         } else {
-            echo 'Inncorrect username or password[1]';
+            echo 'Inncorrect Password';
             // incorrect password
         }
     } else {
-        echo ' inncorrect username or passowrd[2]!';
+        echo ' inncorrect username!';
         // incorrect username
     }
 

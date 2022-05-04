@@ -3,13 +3,10 @@
 session_start();
 // if not loged in redirect to login page
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: ../index.php');
+    header('Location: ../login.php');
     exit;
 }
-$conn = mysqli_connect('localhost','SaleRep','_/d6sBi!FHo@s[Lp','GlazeSure');
-if (mysqli_connect_error()) {
-    exit('Failled to connecto to MySql: ' . mysqli_connect_error()); 
-}
+include('../dbconfig.php');
 // dont ahve pass or email stored in sessions sow need to get results from DB
 $stmt = $conn->prepare('SELECT password FROM accounts WHERE id = ?');
 // use the id to accses the detials

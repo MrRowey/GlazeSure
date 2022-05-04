@@ -1,15 +1,6 @@
-<?php 
-// need to use sessions, so need to allways use the code below
-session_start();
-// if user is not loffed in rediredt to the login page
-if (!isset($_SESSION['loggedin'])) {
-    header('Location: ../login.php');
-    exit;
-}
-?>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>FAF Tournament Match Data</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -24,29 +15,15 @@ if (!isset($_SESSION['loggedin'])) {
     <a href="../Login/logout.php" class="w3-bar-item w3-button w3-mobile" style="float: right;"><i class="fas fa-sign-out-alt"></i> Logout</a>
     <a href="../Login/profile.php" class="w3-bar-item w3-button w3-mobile" style="float: right;"><i class="fas fa-user-circle"></i> Profile</a>
 </nav>
-
-<main w3-container>
-    <h1> GlazeSure Dashboard</h1>
-    <p> Welcome Back, <?=$_SESSION['name']?>!</p>
-    <div w3-container>
-        <h2></h2>
+<main class="w3-container" style="text-align: center;">  
+    <h1 class="display-2">Base Data Input for Autofill for Quote</h1>
+    <div class="container mt-3 ">
+      <a href="/Login/pages/AddData/addTown.php" class="w3-btn w3-blue w3-round">Add Town</a>
+      <a href="/Login/pages/AddData/addDoor.php" class="w3-btn w3-blue w3-round">Add Doors</a>
+      <a href="/Login/pages/AddData/addWindows.php" class="w3-btn w3-blue w3-round">Add Windows</a>
     </div>
+    <p>Mangemenr only to add data to the Town,Doors & windows Tables</p>
 
-    <div>
-    <h2>Recent Leads</h2>
-    
-
-    </div>
-
-    <div>
-    <h2>recent Quotes</h2>
-    </div>
-
-    <div>
-    <h2>Recent Sales</h2>
-    </div>
 
 </main>
-
-
 </html>
