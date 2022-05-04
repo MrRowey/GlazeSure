@@ -44,71 +44,78 @@ CREATE TABLE accounts (
     email VARCHAR(255) NOT NULL
 );
 
--- Creating Sales Table
-CREATE TABLE sales (
-    sale_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    quote_id INT NOT NULL,
-    job_type_id INT NOT NULL,
-    sale_completed VARCHAR(100),
-    notes VARCHAR(255)
+-- Creating Quotes Table
+CREATE TABLE Quotes (
+    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    LeadID INT,
+    Num_Of_Windows INT,
+    Num_Of_Doors INT,
+    Window_TypeID INT,
+    Door_TypeID INT,
+    Cost INT,
+    CustomerID INT,
+    SaleID INT,
+    Notes VARCHAR(255)
 );
 
--- Creating Quotes Table
-CREATE TABLE quote (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    num_of_windows INT,
-    num_of_doors INT,
-    window_type_id INT,
-    door_type_id INT,
-    cost INT,
-    customer_id INT NOT NULL,
-    sale_id INT NOT NULL,
-    notes VARCHAR(255)
+-- Creating Leads Table
+CREATE TABLE Leads (
+    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    LeadType VARCHAR(100)
+);
+
+-- Creating Sales Table
+CREATE TABLE Sales (
+    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    QuoteID INT NOT NULL,
+    Job_TypeID INT NOT NULL,
+    Sale_Completed VARCHAR(100),
+    Notes VARCHAR(255)
 );
 
 -- Creating Customer Table
-CREATE TABLE customer (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255),
-    company VARCHAR(255),
-    location_id INT NOT NULL
+CREATE TABLE Customer (
+    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255),
+    Company VARCHAR(255),
+    LocationID INT NOT NULL
 );
 
 -- Creating location Table
-CREATE TABLE location (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    address VARCHAR(255) NOT NULL,
-    town_id INT NOT NULL
+CREATE TABLE Location (
+    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Address VARCHAR(255) NOT NULL,
+    TownID INT NOT NULL
 );
 
 -- Creating town Table
-CREATE TABLE town (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255)
+CREATE TABLE Town (
+    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255)
 )
 
 -- Creating Windows Table
-CREATE TABLE windows (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    type_name VARCHAR(255)
+CREATE TABLE Windows (
+    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    TypeName VARCHAR(255)
 );
 
 -- Creating Doors Table
-CREATE TABLE doors (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    type_name VARCHAR(255)
+CREATE TABLE Doors (
+    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    TypeName VARCHAR(255)
 );
 
 -- Creating Windows_to_quote Table
-CREATE TABLE windows_to_quote (
-   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   type_name VARCHAR(255)
+CREATE TABLE Windows_To_Quote (
+   ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   TypeName VARCHAR(255)
 );
 
 -- Creating Doors_to_quote Table
-CREATE TABLE doors_to_quite (
-   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   type_name VARCHAR(255)
+CREATE TABLE Doors_To_Quote (
+   ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   TypeName VARCHAR(255)
 );
 
 

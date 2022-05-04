@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+
+if (!isset($_SESSION['loggedin'])) {
+  header('Location: ../index.php');
+  exit;
+}
+
+?>
+
+
+<!DOCTYPE html>
 <html>
 <head>
 <title>W3.CSS Template</title>
