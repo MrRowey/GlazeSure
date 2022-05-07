@@ -36,8 +36,8 @@ CREATE TABLE Quotes (
     LeadID INT,
     Num_Of_Windows INT,
     Num_Of_Doors INT,
-    Window_TypeID INT,
-    Door_TypeID INT,
+    WindowsID INT,
+    DoorsID INT,
     Cost INT,
     CustomerID INT,
     SaleID INT,
@@ -90,18 +90,6 @@ CREATE TABLE Windows (
 CREATE TABLE Doors (
     ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     TypeName VARCHAR(255)
-);
-
--- Creating Windows_to_quote Table
-CREATE TABLE Windows_To_Quote (
-   ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   TypeName VARCHAR(255)
-);
-
--- Creating Doors_to_quote Table
-CREATE TABLE Doors_To_Quote (
-   ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   TypeName VARCHAR(255)
 );
 
 

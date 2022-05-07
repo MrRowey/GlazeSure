@@ -3,7 +3,7 @@ include('../../dbconfig.php');
 
 
 
-$sql = "SELECT ID, TypeName FROM doors";
+$sql = "SELECT ID, LeadID, Num_Of_Windows,Num_Of_Doors,Window_TypeID,Door_TypeID,Cost,CustomerID,Notes  FROM quotes";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -46,7 +46,14 @@ $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_assoc($result)) {
           echo "<tr>";
           echo "<td>" . $row["ID"] . "</td>";
-          echo "<td>" . $row["TypeName"] . "</td>";
+          echo "<td>" . $row["LeadID"] . "</td>";
+          echo "<td>" . $row["Num_Of_Windows"] . "</td>";
+          echo "<td>" . $row["Num_of_Doors"] . "</td>";
+          echo "<td>" . $row["Window_TypeID"] . "</td>";
+          echo "<td>" . $row["Door_TypeID"] . "</td>";
+          echo "<td>" . $row["Cost"] . "</td>";
+          echo "<td>" . $row["CustomerID"] . "</td>";
+          echo "<td>" . $row["Notes"] . "</td>";
           echo "</tr>";
         }
         echo "</table>";
