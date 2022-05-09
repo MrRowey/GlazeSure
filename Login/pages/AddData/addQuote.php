@@ -2,84 +2,107 @@
 include('../../../dbconfig.php');
 
 ## Customer Details
- 
-if(!empty($_POST['townName'])) {
-  echo "Please select a town name";
-} else {
-    if(isset($_GET['townName']) && ($_GET['townName'] != "-1")){
-      echo $_GET['townName'];
-    }
-}
+
+# Get Selected Town.
+if(isset($_POST['submit'])){
+if(!empty($_POST['townName'])){
+  $selected = $_POST['townName'];
+  $sql = 'INSERT INTO quotes (ID) VALUES ($selected)';
+
+  if(mysqli_query($conn,$sql)){
+    echo "town ID succsefuly enterd";
+  } else {
+    echo "error with townid" . mysqli_error($conn);
+  }
+}} 
+
+# Get Selected Town.
+#if(isset($_POST['submit'])){
+#  if(!empty($_POST['winType'])){
+#    $selected = $_POST['winType'];
+#    $sql = 'INSERT INTO quotes (ID) VALUES ($selected)';
+#  
+#    if(mysqli_query($conn,$sql)){
+#      echo "town ID succsefuly enterd";
+#    } else {
+#      echo "error with townid" . mysqli_error($conn);
+#    }
+#  }}
+#
+#  # Get Selected Town.
+#if(isset($_POST['submit'])){
+#  if(!empty($_POST['townName'])){
+#    $selected = $_POST['townName'];
+#    $sql = 'INSERT INTO quotes (ID) VALUES ($selected)';
+#  
+#    if(mysqli_query($conn,$sql)){
+#      echo "town ID succsefuly enterd";
+#    } else {
+#      echo "error with townid" . mysqli_error($conn);
+#    }
+#  }}
+#
 
 
 
-
-
-if (!isset($_POST['cusname'])) {
+if (!isset($_POST['submit'])) {
   $msg_to_user = '<p>Please Fill out the Quote</p>';
 } else {
   ### Collect all input into form 
 
-  ## Customer Details
-  $leadID = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
-  $firstName = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
-  $lastName = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
-  $companyName = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
-  $contactNum = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
-  $contactEmail =mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
-  $streetAddress =mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
+  ## Collecting Customer Details
+  $leadID = mysqli_real_escape_string($conn,$_REQUEST['leadID']);
+  $firstName = mysqli_real_escape_string($conn,$_REQUEST['firstName']);
+  $lastName = mysqli_real_escape_string($conn,$_REQUEST['lastName']);
+  $companyName = mysqli_real_escape_string($conn,$_REQUEST['companyName']);
+  $contactNum = mysqli_real_escape_string($conn,$_REQUEST['contactNum']);
+  $contactEmail =mysqli_real_escape_string($conn,$_REQUEST['contactEmail']);
+  $streetAddress =mysqli_real_escape_string($conn,$_REQUEST['streetAddress']);
+  $townID =mysqli_real_escape_string($conn,$_REQUEST['townID']);
   
+  # Inserting Customer Details
+  $cussql1 = 'INSERT INTO quotes (LeadID) VALUE ($leadID)';
+  $cussql2 = 'INSERT INTO customer (lastName,company,firstName,contactNum,contactEmail,streetAddress,townID) VALUES ("$lastName","$companyName","$firstName",$contactNum,"$contactEmail","$streetAddress",$townID)';
   
-  
-  $townName = 
+  if(mysqli_query($conn, $cussql1)){
+    
+  }
   ## Order Detials
-  $numofwin = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
-  $winType = 
-  $numofdoors = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
-  $doorType =
+  #$numofwin = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
+  #$winType = 
+  #$numofdoors = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
+  #$doorType =
   ## Price
-  $cost = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
-  $createdBy = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
+  #$cost = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
+  #$createdBy = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
 
 
   ## Extra info
 
-
-
-
   #$leadID = mysqli_real_escape_string($conn,$_REQUEST['']);
-  $numofwin = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
+  #$numofwin = mysqli_real_escape_string($conn,$_REQUEST['numofwin']);
   #$numofdoor = mysqli_real_escape_string($conn,$_REQUEST['numofdoor']);
   #$doortype = mysqli_real_escape_string($conn,$_REQUEST['']);
   #$wintype = mysqli_real_escape_string($conn,$_REQUEST['']);
   #$d = mysqli_real_escape_string($conn,$_REQUEST['']);
-  $cusname = mysqli_real_escape_string($conn,$_REQUEST['cusname']);
+  #$cusname = mysqli_real_escape_string($conn,$_REQUEST['cusname']);
   #$locadd = mysqli_real_escape_string($conn,$_REQUEST['locadd']);
 
   ## Insert into Customer Table
-  $sql = "INSERT INTO customer (name) VALUES ('$cusname')";
-  $sql2 =  "INSERT INTO quotes (Num_Of_Windows) VALUES ('$numofwin')";
-  
-  if(mysqli_query($conn, $sql)){
-    echo "Data Inserted Successfully";
-  }else{
-    echo "ERROR: " . mysqli_error($conn);
-  }
-  if(mysqli_query($conn, $sql)){
-    echo "Data Inserted Successfully";
-  }else{
-    echo "ERROR: " . mysqli_error($conn);
-  }
-
-
-
-
-
-
-
-
-
-
+  #$sql = "INSERT INTO customer (name) VALUES ('$cusname')";
+  #$sql2 =  "INSERT INTO quotes (Num_Of_Windows) VALUES ('$numofwin')";
+  #
+  #if(mysqli_query($conn, $sql)){
+  #  echo "Data Inserted Successfully";
+  #}else{
+  #  echo "ERROR: " . mysqli_error($conn);
+  #}
+  #if(mysqli_query($conn, $sql)){
+  #  echo "Data Inserted Successfully";
+  #}else{
+  #  echo "ERROR: " . mysqli_error($conn);
+  #}
+#
 }
 
 # Door Type Selection
@@ -184,7 +207,7 @@ $result3 = mysqli_query($conn, $sql3);
           echo "<select name='winType' id='winType' class='w3-select w3-border'>";
           echo "<option value='' disabled selected>Select Window Type</option>";
           while ($row = mysqli_fetch_array($result2)) {
-            echo "<option value='" . $row['TypeName'] . "'>" . $row['TypeName'] . "</option>";
+            echo "<option value='" . $row['ID'] . "'>" . $row['TypeName'] . "</option>";
           }
           echo "</select>";
         ?>    
@@ -204,8 +227,11 @@ $result3 = mysqli_query($conn, $sql3);
           echo "<select name='doorType' id='doorType' class='w3-select w3-border' >";
           echo "<option value='' disabled selected>Select Door Type</option>";
           while ($row = mysqli_fetch_array($result)) {
-            echo "<option value='" . $row['TypeName'] . "'>" . $row['TypeName'] . "</option>";
-          }
+            echo "<option value='" . $row['ID'] . "'>" . $row['TypeName'] . "</option>";
+          } 
+
+
+          
           echo "</select>";
         ?>    
       </div>    
