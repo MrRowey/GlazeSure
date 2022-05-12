@@ -18,6 +18,7 @@ if (!isset($_SESSION['loggedin'])) {
 <nav class="w3-bar w3-blue">
     <a href="/Login/home.php" class="w3-bar-item w3-button w3-mobile">Home</a>
     <a href="/Login/pages/leads.php" class="w3-bar-item w3-button w3-mobile">Leads</a>
+    <a href="/Login/pages/customer.php" class="w3-bar-item w3-button w3-mobile">Customer</a>  
     <a href="/Login/pages/quotes.php" class="w3-bar-item w3-button w3-mobile">Quotes</a>
     <a href="/Login/pages/sales.php" class="w3-bar-item w3-button w3-mobile">Sales</a>
     <a href="/Login/pages/management.php" class="w3-bar-item w3-button w3-mobile">Data Management</a>    

@@ -6,7 +6,7 @@ $result = $conn->query($sql);
 ?>
 <html>
 <head>
-    <title>Leads</title>
+    <title>Customers</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -23,8 +23,7 @@ $result = $conn->query($sql);
     <a href="../Login/profile.php" class="w3-bar-item w3-button w3-mobile" style="float: right;"><i class="fas fa-user-circle"></i> Profile</a>
 </nav>
 <main class="w3-container">  
-    <h1 class="display-2">List of Leads
-    </h1>
+    <h1 class="display-2">List of Customers</h1>
     <div class="container mt-3">
       <a href="/Login/pages/AddData/newCustomer.php" class="w3-btn w3-green w3-round" style="float: right;">Add New Customer</a>
       <?php

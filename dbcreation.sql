@@ -16,11 +16,13 @@ CREATE DATABASE GlazeSure;
 -- Selecting the Database
 USE GlazeSure;
 
--- Creating Database user
+--- Creating Database users
 
--- Creating SaleManager PW: 77!v(ZOzVlLSIAX1
-CREATE USER 'SaleManager'@'%' IDENTIFIED WITH mysql_native_password BY '77!v(ZOzVlLSIAX1';GRANT USAGE ON *.* TO 'SaleManager'@'%';ALTER USER 'SaleManager'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
+-- SaleManager PW: 77!v(ZOzVlLSIAX1
+CREATE USER 'SaleManager'@'%' IDENTIFIED WITH mysql_native_password BY '77!v(ZOzVlLSIAX1';GRANT USAGE ON *.* TO 'SaleManager'@'%';ALTER USER 'SaleManager'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
 GRANT ALL PRIVILEGES ON `glazesure`.* TO 'SaleManager'@'%'; ALTER USER 'SaleRep'@'%' ; 
+
+-- SaleAdmin
 
 -- Creating Accounts Table
 CREATE TABLE accounts (
@@ -61,17 +63,14 @@ CREATE TABLE Sales (
 
 -- Creating Customer Table
 CREATE TABLE Customer (
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(255),
-    Company VARCHAR(255),
-    LocationID INT NOT NULL
-);
-
--- Creating location Table
-CREATE TABLE Location (
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    Address VARCHAR(255) NOT NULL,
-    TownID INT NOT NULL
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    lastName VARCHAR(255) NOT NULL,
+    firstName VARCHAR(255) NOT NULL,
+    companyName VARCHAR(255),
+    contactEmail VARCHAR(255) NOT NULL,
+    contactNumber INT NOT NULL,
+    streetAddress VARCHAR(255) NOT NULL,
+    townID INT NOT NULL
 );
 
 -- Creating town Table
@@ -117,5 +116,3 @@ Insert into Town (ID, Name) VALUES ('5','Much Wenlock');
 Insert into Town (ID, Name) VALUES ('6','Market Drayton');
 Insert into Town (ID, Name) VALUES ('7','Craven Arms');
 Insert into Town (ID, Name) VALUES ('8',"Bishop's Castle");
-
-
