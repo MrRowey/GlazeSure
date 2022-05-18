@@ -24,7 +24,6 @@ $result = $conn->query($sql);
     <h1 class="display-2">List of Leads
     </h1>
     <div class="container mt-3">
-      <a href="/Login/pages/AddData/addLead.php" class="w3-btn w3-green w3-round" style="float: right;">Add New Lead</a>
       <?php
         if ($result->num_rows > 0) {
           echo "<table class='w3-table'>";
