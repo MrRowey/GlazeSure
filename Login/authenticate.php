@@ -25,8 +25,10 @@ if ($stmt = $conn->prepare('SELECT id, password FROM accounts WHERE username = ?
             $_SESSION['id'] = $id;
             header('Location: ../Login/home.php');
         } else {
+            header('Location: ../login.php');
         }
     } else {
+        header('Location: ../login.php');
     }
 
     $stmt->close();
