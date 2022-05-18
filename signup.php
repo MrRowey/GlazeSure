@@ -1,3 +1,7 @@
+<?php
+include('dbconfig.php');
+?>
+
 <html>
 <head>
     <title>SignUp</title>
