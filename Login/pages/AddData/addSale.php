@@ -1,5 +1,5 @@
 <?php
-include('../../../dbconfig.php');
+include('../../dbconfig_Admin.php');
 
 if ($_POST['submit']) {
   $msg_to_user = '<p>Please Fill out the quote!</p>';

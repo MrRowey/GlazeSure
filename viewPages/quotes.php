@@ -1,5 +1,5 @@
 <?php
-include('../dbconfig_Admin.php');
+include('../dbconfig.php');
 
 $sql = "SELECT quotes.id, quotes.LeadID, quotes.Num_Of_Windows, quotes.Num_Of_Doors, windows.windowType, doors.doorType, quotes.Cost, customer.firstName, customer.lastName, quotes.notes FROM quotes,windows,doors,customer WHERE quotes.Window_TypeID = windows.id AND quotes.Door_TypeID = doors.id AND quotes.CustomerID = customer.id;";
 
@@ -14,19 +14,16 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 <nav class="w3-bar w3-blue">
-    <a href="/Login/home.php" class="w3-bar-item w3-button w3-mobile">Home</a>
-    <a href="/Login/pages/leads.php" class="w3-bar-item w3-button w3-mobile">Leads</a>
-    <a href="/Login/pages/customer.php" class="w3-bar-item w3-button w3-mobile">Customer</a>  
-    <a href="/Login/pages/quotes.php" class="w3-bar-item w3-button w3-mobile">Quotes</a>
-    <a href="/Login/pages/sales.php" class="w3-bar-item w3-button w3-mobile">Sales</a>
-    <a href="/Login/pages/management.php" class="w3-bar-item w3-button w3-mobile">Data Management</a>    
-    <a href="../Login/logout.php" class="w3-bar-item w3-button w3-mobile" style="float: right;"><i class="fas fa-sign-out-alt"></i> Logout</a>
-    <a href="../Login/profile.php" class="w3-bar-item w3-button w3-mobile" style="float: right;"><i class="fas fa-user-circle"></i> Profile</a>
+    <a href="/index.php" class="w3-bar-item w3-button w3-mobile">Home</a>
+    <a href="/viewPages/leads.php" class="w3-bar-item w3-button w3-mobile">Leads</a>
+    <a href="/viewPages/customer.php" class="w3-bar-item w3-button w3-mobile">Customer</a>  
+    <a href="/viewPages/quotes.php" class="w3-bar-item w3-button w3-mobile">Quotes</a>
+    <a href="/viewPages/sales.php" class="w3-bar-item w3-button w3-mobile">Sales</a>
+    <a href="/login.php" class="w3-bar-item w3-button w3-mobile" style="float: right;" >Login</a>
 </nav>
 <main class="w3-container">  
     <h1 class="display-2">All Quotes</h1>
     <div class="container mt-3">
-      <a href="/Login/pages/AddData/addQuote.php" class="w3-btn w3-green w3-round" style="float: right;">Add Quote</a>
       <?php
        if (mysqli_num_rows($result) > 0) {
         echo "<table class='w3-table'>";

@@ -1,3 +1,6 @@
+<?php
+include('dbconfig.php');
+?>
 <html>
 <head>
     <title>FAF Tournament Match Data</title>
@@ -23,7 +26,6 @@
         </p>
         <p>
             <button class="w3-btn w3-blue" type="submit">Login</button>
-            <a href="/signup.php">Dont have an accout sign up here</a>
         </p>
     </form>
 </main>

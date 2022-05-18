@@ -1,5 +1,5 @@
 <?php
-include('../../../dbconfig.php');
+include('../../dbconfig_Admin.php');
 if ($_POST["form_submit_button"]) {
   # Collecting Data From Form.
   echo "button was pressed<br>";

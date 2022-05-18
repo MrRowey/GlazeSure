@@ -1,5 +1,5 @@
 <?php
-include('../../../dbconfig.php');
+include('../../dbconfig_Admin.php');
 
 if (!isset($_POST['message'])) {
   $msg_to_user = '<p>Please add the Door Type</p>';

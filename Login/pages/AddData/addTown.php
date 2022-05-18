@@ -1,5 +1,5 @@
 <?php
-include('../../../dbconfig.php');
+include('../../dbconfig_Admin.php');
 
 if (!isset($_POST['Name'])) {
   $msg_to_user = '<p>Please add the Town Name!</p>';

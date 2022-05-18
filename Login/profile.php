@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: ../login.php');
     exit;
 }
-include('../dbconfig.php');
+include('dbconfig_Admin.php');
 // dont ahve pass or email stored in sessions sow need to get results from DB
 $stmt = $conn->prepare('SELECT password FROM accounts WHERE id = ?');
 // use the id to accses the detials

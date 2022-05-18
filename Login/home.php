@@ -7,7 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 };
 
-include('../dbconfig.php');
+include('dbconfig_Admin.php');
 # Get Total records
 $sql = "SELECT COUNT(*) AS totalQuotes FROM quotes";
 $result = $conn->query($sql);

@@ -1,3 +1,6 @@
+<?php
+include('../dbconfig_Admin.php');
+?>
 <html>
 <head>
     <title>FAF Tournament Match Data</title>

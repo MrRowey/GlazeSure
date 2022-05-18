@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../dbconfig.php');
+include('dbconfig_Admin.php');
 
 if (!isset($_POST['username'], $_POST['password'])) {
     exit('Please enter your Username and Password');

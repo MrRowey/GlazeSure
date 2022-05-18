@@ -1,5 +1,5 @@
 <?php
-include('../dbconfig_Admin.php');
+include('../dbconfig.php');
 
 $sql = "SELECT sales.id, sales.quote_id, job_type.type, sale_completed.completed, sales.notes FROM sales, job_type, sale_completed WHERE sales.job_type_id = job_type.id AND sales.sale_completed = sale_completed.id ;";
 
@@ -15,19 +15,16 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 <nav class="w3-bar w3-blue">
-    <a href="/Login/home.php" class="w3-bar-item w3-button w3-mobile">Home</a>
-    <a href="/Login/pages/leads.php" class="w3-bar-item w3-button w3-mobile">Leads</a>
-    <a href="/Login/pages/customer.php" class="w3-bar-item w3-button w3-mobile">Customer</a>  
-    <a href="/Login/pages/quotes.php" class="w3-bar-item w3-button w3-mobile">Quotes</a>
-    <a href="/Login/pages/sales.php" class="w3-bar-item w3-button w3-mobile">Sales</a>
-    <a href="/Login/pages/management.php" class="w3-bar-item w3-button w3-mobile">Data Management</a>    
-    <a href="../Login/logout.php" class="w3-bar-item w3-button w3-mobile" style="float: right;"><i class="fas fa-sign-out-alt"></i> Logout</a>
-    <a href="../Login/profile.php" class="w3-bar-item w3-button w3-mobile" style="float: right;"><i class="fas fa-user-circle"></i> Profile</a>
+    <a href="/index.php" class="w3-bar-item w3-button w3-mobile">Home</a>
+    <a href="/viewPages/leads.php" class="w3-bar-item w3-button w3-mobile">Leads</a>
+    <a href="/viewPages/customer.php" class="w3-bar-item w3-button w3-mobile">Customer</a>  
+    <a href="/viewPages/quotes.php" class="w3-bar-item w3-button w3-mobile">Quotes</a>
+    <a href="/viewPages/sales.php" class="w3-bar-item w3-button w3-mobile">Sales</a>
+    <a href="/login.php" class="w3-bar-item w3-button w3-mobile" style="float: right;" >Login</a>
 </nav>
 <main class="w3-container">  
     <h1 class="display-2">Sales</h1>
     <div class="container mt-3">
-      <a href="/Login/pages/AddData/addSale.php" class="w3-btn w3-green w3-round" style="float: right;">Add New Sale</a>
       <?php
         if ($result->num_rows > 0) {
           echo "<table class='w3-table'>";
