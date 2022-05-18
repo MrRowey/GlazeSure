@@ -1,7 +1,7 @@
 <?php
 include('../dbconfig.php');
 
-$sql = "select customer.id,customer.lastName,customer.firstName,customer.companyName,customer.contactEmail,customer.contactNumber,customer.streetAddress,town.Name from customer,town WHERE customer.townID = town.id;";
+$sql = "SELECT customer.id,customer.lastName,customer.firstName,customer.companyName,customer.contactEmail,customer.contactNumber,customer.streetAddress,town.Name FROM customer,town WHERE customer.townID = town.id;";
 $result = $conn->query($sql);
 ?>
 <html>
