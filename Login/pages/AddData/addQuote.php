@@ -1,16 +1,43 @@
 <?php
 include('../../../dbconfig.php');
 
+if (!isset($_POST['cost'])) {
+  $msg_to_user = '<p>Please Fill out the quote!</p>';
+} else {
+
+  $numWin = $_POST["numofwin"];
+  $numDoor = $_POST["numofdoors"];
+  $winType = $_POST["winType"];
+  $doorType = $_POST["doorType"];
+  $cost = $_POST["cost"];
+  $cusName = $_POST["cusName"];
+  $notes = $_POST["notes"];
+  $leadID = $_POST["leadID"];
+
+  $sql = "INSERT INTO quotes (LeadID,Num_Of_windows,Num_Of_Doors,Window_TypeID,Door_TypeID,Cost,CustomerID,Notes) VALUES ($leadID,$numWin,$numDoor,'$winType','$doorType',$cost,$cusName,'$notes')";
+
+  if(mysqli_query($conn, $sql)){
+    echo "Data Inserted Successfully";
+  }else{
+    echo "ERROR: " . mysqli_error($conn);
+  }
+}
+
 # Door Type Selection
-$sql = "SELECT ID,TypeName FROM doors";
+$sql = "SELECT ID,doorType FROM doors";
 $result = mysqli_query($conn, $sql);
 
 # Window Type Selection
-$sql2 = "SELECT ID,TypeName FROM windows";
+$sql2 = "SELECT ID,windowType FROM windows";
 $result2 = mysqli_query($conn, $sql2);
+# Window Type Selection
+$sql3 = "SELECT id,firstName,lastName FROM customer";
+$result3 = mysqli_query($conn, $sql3);
+# Lead ID
+$sql4 = "SELECT ID FROM leads";
+$result4 = mysqli_query($conn, $sql4);
 
 ?>
-
 <html>
 <head>
     <title>Add Quote</title>
@@ -46,7 +73,7 @@ $result2 = mysqli_query($conn, $sql2);
           echo "<select name='winType' id='winType' class='w3-select w3-border'>";
           echo "<option value='' disabled selected>Select Window Type</option>";
           while ($row = mysqli_fetch_array($result2)) {
-            echo "<option value='" . $row['ID'] . "'>" . $row['TypeName'] . "</option>";
+            echo "<option value='" . $row['ID'] . "'>" . $row['windowType'] . "</option>";
           }
           echo "</select>";
         ?>    
@@ -66,27 +93,40 @@ $result2 = mysqli_query($conn, $sql2);
           echo "<select name='doorType' id='doorType' class='w3-select w3-border' >";
           echo "<option value='' disabled selected>Select Door Type</option>";
           while ($row = mysqli_fetch_array($result)) {
-            echo "<option value='" . $row['ID'] . "'>" . $row['TypeName'] . "</option>";
-          } 
-
-
-          
+            echo "<option value='" . $row['ID'] . "'>" . $row['doorType'] . "</option>";
+          }         
           echo "</select>";
         ?>    
       </div>    
     </div>
     <h2>Price</h2>
     <div class="w3-row-padding">
-      <div class="w3-half">
+      <div class="w3-third">
         <!-- cost-->    
         <label class="w3-text-blue"><b>Cost of Quote</b></label>
         <input class="w3-input w3-border" type="number" name="cost" id="cost">
       </div>
-      <div class="w3-half">
-        <!-- created By -->    
-        <label class="w3-text-blue"><b>Quote created by</b></label>
-        <input class="w3-input w3-border" type="text" name="createdBy" id="createdBy">  
-      </div>    
+      <div class="w3-third">
+        <!--door Type-->
+        <label class="w3-text-blue"><b>Customer Name</b></label>
+        <select name='cusName' id='cusName' class='w3-select w3-border' >
+          <option value='' disabled selected>Select Customer</option>
+          <?php  while ($row = mysqli_fetch_array($result3)) {
+            echo "<option value='" . $row['id'] . "'>" . $row['firstName'] . " " . $row['lastName'] . "</option>";
+          }?>         
+          </select> 
+      </div>
+      <div class="w3-third">
+        <!--door Type-->
+        <label class="w3-text-blue"><b>Lead ID</b></label>
+        <select name='leadID' id='leadID' class='w3-select w3-border' >
+          <option value='' disabled selected>Select Lead ID</option>
+          <?php  while ($row = mysqli_fetch_array($result4)) {
+            echo "<option value='" . $row['ID'] . "'>" . $row['ID'] . "</option>";
+          };
+          ?>         
+        </select> 
+      </div>
     </div>
     <h2>Extra Information</h2>
     <div class="w3-row-padding"> 
@@ -96,8 +136,6 @@ $result2 = mysqli_query($conn, $sql2);
     <br>
     <button class="w3-btn w3-blue w3-round-large" type="submit">Submit</button>
   </form> 
-
-
 </main>
 </html>
 

@@ -1,7 +1,7 @@
 <?php
 include('../../dbconfig.php');
 
-$sql = "SELECT * FROM customer";
+$sql = "select customer.id,customer.lastName,customer.firstName,customer.companyName,customer.contactEmail,customer.contactNumber,customer.streetAddress,town.Name from customer,town WHERE customer.townID = town.id;";
 $result = $conn->query($sql);
 ?>
 <html>
@@ -48,7 +48,7 @@ $result = $conn->query($sql);
             echo "<td>" . $row["contactEmail"] . "</td>";
             echo "<td>" . $row["contactNumber"] . "</td>";
             echo "<td>" . $row["streetAddress"] . "</td>";
-            echo "<td>" . $row["townID"] . "</td>";
+            echo "<td>" . $row["Name"] . "</td>";
             echo "</tr>";
           }
           echo "</table>";

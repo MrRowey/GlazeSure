@@ -1,28 +1,25 @@
-/*================================================= 
-Title: Database for GlazeSure
-Version: 0.2
-Date: 12/04/2022
-Server: MySQL via UniServerZ
-Database:
+--#############################################################################################
+--## Title: Database for GlazeSure                                                           ##
+--## Version: 0.2                                                                            ##
+--## Date: 12/04/2022                                                                        ##
+--## Server: MySQL via UniServerZ                                                            ##
+--## Database:                                                                               ##
+--##                                                                                         ##
+--##   Users:                                                                                ##
+--##                                                                                         ##
+--##    Tables: sales, quotes, customer,doors, doors_to_quote, windows, windows_to_quote     ##
+--##                                                                                         ##
+--#############################################################################################
 
-    Users: sale_rep
+-- Drop all tables
+DROP DATABASE Glazesure;
 
-    Tables: sales, quotes, customer,doors, doors_to_quote, windows, windows_to_quote
-=================================================*/
 
--- Creating GlazeSure Database
+
+
+-- Creating GlazeSure & Selecting Database
 CREATE DATABASE GlazeSure;
-
--- Selecting the Database
 USE GlazeSure;
-
---- Creating Database users
-
--- SaleManager PW: 77!v(ZOzVlLSIAX1
-CREATE USER 'SaleManager'@'%' IDENTIFIED WITH mysql_native_password BY '77!v(ZOzVlLSIAX1';GRANT USAGE ON *.* TO 'SaleManager'@'%';ALTER USER 'SaleManager'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
-GRANT ALL PRIVILEGES ON `glazesure`.* TO 'SaleManager'@'%'; ALTER USER 'SaleRep'@'%' ; 
-
--- SaleAdmin
 
 -- Creating Accounts Table
 CREATE TABLE accounts (
@@ -31,6 +28,10 @@ CREATE TABLE accounts (
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL
 );
+
+-- Adding Admin Account
+
+
 
 -- Creating Quotes Table
 CREATE TABLE Quotes (
@@ -46,11 +47,23 @@ CREATE TABLE Quotes (
     Notes VARCHAR(255)
 );
 
+-- Quote Inserts
+
+
+
+
+
 -- Creating Leads Table
 CREATE TABLE Leads (
     ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     LeadType VARCHAR(100)
 );
+
+-- Lead Inserts
+
+
+
+
 
 -- Creating Sales Table
 CREATE TABLE Sales (
@@ -60,6 +73,14 @@ CREATE TABLE Sales (
     Sale_Completed VARCHAR(100),
     Notes VARCHAR(255)
 );
+
+
+-- Sale Inserts
+
+
+
+
+
 
 -- Creating Customer Table
 CREATE TABLE Customer (
@@ -73,11 +94,25 @@ CREATE TABLE Customer (
     townID INT NOT NULL
 );
 
+-- Customer Insters
+
+
+
+
+
+
 -- Creating town Table
 CREATE TABLE Town (
     ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(255)
 )
+
+-- Town Inserts
+
+
+
+
+
 
 -- Creating Windows Table
 CREATE TABLE Windows (
@@ -85,11 +120,40 @@ CREATE TABLE Windows (
     TypeName VARCHAR(255)
 );
 
+-- Window Insers
+
+
+
+
+
+
 -- Creating Doors Table
 CREATE TABLE Doors (
     ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     TypeName VARCHAR(255)
 );
+
+-- Door Inserts
+
+
+-- Creating job_type
+
+
+
+-- Job_type Inserts
+
+
+
+-- creating sale_completed
+
+
+-- Insert Sale_completed 
+
+
+
+-- Table Alters
+
+
 
 
 -- Insert Statemenst
@@ -116,3 +180,7 @@ Insert into Town (ID, Name) VALUES ('5','Much Wenlock');
 Insert into Town (ID, Name) VALUES ('6','Market Drayton');
 Insert into Town (ID, Name) VALUES ('7','Craven Arms');
 Insert into Town (ID, Name) VALUES ('8',"Bishop's Castle");
+
+
+ALTER TABLE windows RENAME COLUMN TypeName TO WindowType;
+ALTER TABLE doors RENAME COLUMN TypeName TO DoorType;

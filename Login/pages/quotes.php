@@ -1,12 +1,10 @@
 <?php
 include('../../dbconfig.php');
 
+$sql = "SELECT quotes.id, quotes.LeadID, quotes.Num_Of_Windows, quotes.Num_Of_Doors, windows.windowType, doors.doorType, quotes.Cost, customer.firstName, customer.lastName, quotes.notes FROM quotes,windows,doors,customer WHERE quotes.Window_TypeID = windows.id AND quotes.Door_TypeID = doors.id AND quotes.CustomerID = customer.id;";
 
-
-$sql = "SELECT ID, LeadID, Num_Of_Windows,Num_Of_Doors,Window_TypeID,Door_TypeID,Cost,CustomerID,Notes  FROM quotes";
-$result = mysqli_query($conn, $sql);
+$result = $conn->query($sql);
 ?>
-
 <html>
 <head>
     <title>FAF Tournament Match Data</title>
@@ -33,41 +31,40 @@ $result = mysqli_query($conn, $sql);
        if (mysqli_num_rows($result) > 0) {
         echo "<table class='w3-table'>";
         echo "<tr class='w3-blue'>";
-        echo "<th>ID</th>";
+        echo "<th>QuoteID</th>";
         echo "<th>LeadID</th>";
         echo "<th>Number of Windows</th>";  
         echo "<th>Number of Doors</th>";
         echo "<th>Window Type</th>";
         echo "<th>Door Type</th>";
         echo "<th>Cost</th>";
-        echo "<th>CusomterID</th>";
+        echo "<th>Forename</th>";
+        echo "<th>Surname</th>";
         echo "<th>Notes</th>";
         echo "</tr>";  
-                
         while($row = mysqli_fetch_assoc($result)) {
           echo "<tr>";
-          echo "<td>" . $row["ID"] . "</td>";
+          echo "<td>" . $row["id"] . "</td>";
           echo "<td>" . $row["LeadID"] . "</td>";
           echo "<td>" . $row["Num_Of_Windows"] . "</td>";
-          echo "<td>" . $row["Num_of_Doors"] . "</td>";
-          echo "<td>" . $row["Window_TypeID"] . "</td>";
-          echo "<td>" . $row["Door_TypeID"] . "</td>";
-          echo "<td>" . $row["Cost"] . "</td>";
-          echo "<td>" . $row["CustomerID"] . "</td>";
-          echo "<td>" . $row["Notes"] . "</td>";
+          echo "<td>" . $row["Num_Of_Doors"] . "</td>";
+          echo "<td>" . $row["windowType"] . "</td>";
+          echo "<td>" . $row["doorType"] . "</td>";
+          echo "<td>£ " . $row["Cost"] . "</td>";
+          echo "<td>" . $row["firstName"] . "</td>";
+          echo "<td>" . $row["lastName"] . "</td>";
+          echo "<td>" . $row["notes"] . "</td>";
           echo "</tr>";
         }
         echo "</table>";
       } else {
         echo "0 Results";
       }
-
-
-
-
-
-
       ?>
     </div>
 </main>
 </html>
+
+<?php
+mysqli_close($conn);
+?>
