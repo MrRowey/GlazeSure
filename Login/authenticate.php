@@ -25,12 +25,8 @@ if ($stmt = $conn->prepare('SELECT id, password FROM accounts WHERE username = ?
             $_SESSION['id'] = $id;
             header('Location: ../Login/home.php');
         } else {
-            echo 'Inncorrect Password';
-            // incorrect password
         }
     } else {
-        echo ' inncorrect username!';
-        // incorrect username
     }
 
     $stmt->close();
