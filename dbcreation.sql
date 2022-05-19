@@ -20,9 +20,9 @@ USE GlazeSure;
 
 -- Creating Accounts Table
 CREATE TABLE accounts (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL
 );
 
 -- Adding Admin Account
@@ -30,15 +30,15 @@ INSERT INTO accounts (username,password,email) VALUES ('admin','$2y$10$293qWzaTc
 
 -- Creating Quotes Table
 CREATE TABLE Quotes (
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    LeadID INT,
-    Num_Of_Windows INT,
-    Num_Of_Doors INT,
-    WindowsID INT,
-    DoorsID INT,
+    ID(100) INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    LeadID INT(10),
+    Num_Of_Windows INT(10),
+    Num_Of_Doors INT(10),
+    WindowsID INT(10),
+    DoorsID INT(10),
     Cost INT,
-    CustomerID INT,
-    Notes VARCHAR(255)
+    CustomerID INT(10),
+    Notes TEXT
 );
 
 -- Alter table
@@ -77,8 +77,8 @@ INSERT INTO quotes (LeadID,Num_Of_Windows,Num_Of_Doors,Door_TypeID,Window_TypeID
 
 -- Creating Leads Table
 CREATE TABLE Leads (
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    notes VARCHAR(255)
+    ID INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    notes TEXT NOT NULL
 );
 
 -- Lead Inserts
@@ -111,11 +111,11 @@ INSERT INTO leads (ID,notes) Value (25,'Marketing');
 
 -- Creating Sales Table
 CREATE TABLE Sales (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    quote_id INT NOT NULL,
-    job_type_id INT NOT NULL,
-    sale_completed VARCHAR(100),
-    notes VARCHAR(255)
+    id INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    quote_id INT(100) NOT NULL,
+    job_type_id INT(10) NOT NULL,
+    sale_completed VARCHAR(100) NOT NULL,
+    notes TEXT
 );
 
 -- Sale Inserts
@@ -134,14 +134,14 @@ INSERT INTO sales (id, quote_id, job_type_id, sale_completed,notes) VALUES (11,2
 
 -- Creating Customer Table
 CREATE TABLE Customer (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    lastName VARCHAR(255) NOT NULL,
-    firstName VARCHAR(255) NOT NULL,
-    companyName VARCHAR(255),
-    contactEmail VARCHAR(255) NOT NULL,
+    id INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    lastName VARCHAR(100) NOT NULL,
+    firstName VARCHAR(100) NOT NULL,
+    companyName VARCHAR(100),
+    contactEmail VARCHAR(100) NOT NULL,
     contactNumber INT NOT NULL,
-    streetAddress VARCHAR(255) NOT NULL,
-    townID INT NOT NULL
+    streetAddress VARCHAR(150) NOT NULL,
+    townID INT(10) NOT NULL
 );
 
 -- Customer Insters
@@ -158,8 +158,8 @@ INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumb
 
 -- Creating town Table
 CREATE TABLE Town (
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(255)
+    ID INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL
 )
 
 -- Town Inserts
@@ -174,8 +174,8 @@ Insert into Town (ID, Name) VALUES ('8',"Bishop's Castle");
 
 -- Creating Windows Table
 CREATE TABLE Windows (
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    WindowType VARCHAR(255)
+    ID INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    WindowType VARCHAR(100) NOT NULL
 );
 
 -- Window Insers
@@ -185,8 +185,8 @@ Insert into windows (ID, TypeName) VALUES ('3','Sliding Sash');
 
 -- Creating Doors Table
 CREATE TABLE Doors (
-    ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    DoorType VARCHAR(255)
+    ID INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    DoorType VARCHAR(100) NOT NULL
 );
 
 -- Door Inserts
@@ -199,7 +199,7 @@ Insert into doors (ID, TypeName) VALUES ('6','Patio Sliding');
 
 -- Creating job_type
 CREATE TABLE job_type (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     type VARCHAR(100)
 );
 
@@ -209,7 +209,7 @@ Insert into job_type (type) VALUES ('Supply & Install');
 
 -- creating sale_completed
 CREATE TABLE sale_completed (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT(100) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     completed VARCHAR(100)
 );
 
