@@ -38,6 +38,7 @@ $result = $conn->query($sql);
           echo "<th>Contact Number</th>";
           echo "<th>Street Addresss</th>";
           echo "<th>Town Name</th>";
+          echo "<th>Update</th>";
           echo "</tr>";  
           while($row = $result->fetch_assoc()) {
             echo "<tr>";
@@ -49,6 +50,7 @@ $result = $conn->query($sql);
             echo "<td>" . $row["contactNumber"] . "</td>";
             echo "<td>" . $row["streetAddress"] . "</td>";
             echo "<td>" . $row["Name"] . "</td>";
+            echo '<td><a href="../pages/AddData/updateCustomer.php?id=' . $row["id"] . '">Update</a></td>';
             echo "</tr>";
           }
           echo "</table>";

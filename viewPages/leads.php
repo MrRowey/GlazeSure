@@ -21,7 +21,8 @@ $result = $conn->query($sql);
     <a href="/login.php" class="w3-bar-item w3-button w3-mobile" style="float: right;" >Login</a>
 </nav>
 <main class="w3-container">  
-    <h1 class="display-2">List of Leads</h1>
+    <h1 class="display-2">List of Leads
+    </h1>
     <div class="container mt-3">
       <?php
         if ($result->num_rows > 0) {

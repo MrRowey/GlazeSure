@@ -147,13 +147,13 @@ CREATE TABLE Customer (
 -- Customer Insters
 
 INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Row','Josh','IT Systems LTD','JoshRow@gmail.com',01743247526,'17 Test Lane',2);
-INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Jones','Maddison','Accuse systems','MaddisonJones@gmail.com',017465847526,'25 Sky Road',1);
-INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Rowe','Kim','Eco Focus','dd92398@enhanceronly.com',01743247526,'37 Wilshaw Mill Road',4);
-INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Jones','James','Snared Services','1sfeom@isueir.com',01743247526,'380 Filton Avenue',2);
-INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Smith','Robert','Sanguine Services','hstpierr@tchoeo.com',01743247526,'22 Clemence Road',6);
-INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Williams','Mary','The Helping Hands','aops98@chantellegribbon.com',01743247526,'148 Queen Alexandra Road',4);
-INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Dacis','Linda','Random Repairs','denis3084@eetieg.com',01743247526,'3 Rhodes Drive',8);
-INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Johnson','Lisa','Refresh Random','jdiezmed@gmailvn.net',01743247526,'15 Cheddar Waye',3);
+INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Jones','Maddison','Accuse systems','MaddisonJones@gmail.com',01746584526,'25 Sky Road',1);
+INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Rowe','Kim','Eco Focus','dd92398@enhanceronly.com',0174324726,'37 Wilshaw Mill Road',4);
+INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Jones','James','Snared Services','1sfeom@isueir.com',0174327526,'380 Filton Avenue',2);
+INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Smith','Robert','Sanguine Services','hstpierr@tchoeo.com',0743247526,'22 Clemence Road',6);
+INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Williams','Mary','The Helping Hands','aops98@chantellegribbon.com',0174247526,'148 Queen Alexandra Road',4);
+INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Dacis','Linda','Random Repairs','denis3084@eetieg.com',0174247526,'3 Rhodes Drive',8);
+INSERT INTO customer (id,lastName,firstName,companyName,contactEmail,contactNumber,streetAddress,townID) VALUES (1,'Johnson','Lisa','Refresh Random','jdiezmed@gmailvn.net',0173247526,'15 Cheddar Waye',3);
 
 
 -- Creating town Table

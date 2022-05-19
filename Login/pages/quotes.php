@@ -1,7 +1,7 @@
 <?php
 include('../dbconfig_Admin.php');
 
-$sql = "SELECT quotes.id, quotes.LeadID, quotes.Num_Of_Windows, quotes.Num_Of_Doors, windows.windowType, doors.doorType, quotes.Cost, customer.firstName, customer.lastName, quotes.notes FROM quotes,windows,doors,customer WHERE quotes.Window_TypeID = windows.id AND quotes.Door_TypeID = doors.id AND quotes.CustomerID = customer.id;";
+$sql = "SELECT quotes.ID, quotes.LeadID, quotes.Num_Of_Windows, quotes.Num_Of_Doors, windows.windowType, doors.doorType, quotes.Cost, customer.firstName, customer.lastName, quotes.notes FROM quotes,windows,doors,customer WHERE quotes.Window_TypeID = windows.id AND quotes.Door_TypeID = doors.id";
 
 $result = $conn->query($sql);
 ?>
@@ -29,34 +29,36 @@ $result = $conn->query($sql);
       <a href="/Login/pages/AddData/addQuote.php" class="w3-btn w3-green w3-round" style="float: right;">Add Quote</a>
       <?php
        if (mysqli_num_rows($result) > 0) {
-        echo "<table class='w3-table'>";
-        echo "<tr class='w3-blue'>";
-        echo "<th>QuoteID</th>";
-        echo "<th>LeadID</th>";
-        echo "<th>Number of Windows</th>";  
-        echo "<th>Number of Doors</th>";
-        echo "<th>Window Type</th>";
-        echo "<th>Door Type</th>";
-        echo "<th>Cost</th>";
-        echo "<th>Forename</th>";
-        echo "<th>Surname</th>";
-        echo "<th>Notes</th>";
-        echo "</tr>";  
+        echo '<table class="w3-table">';
+        echo '<tr class="w3-blue">';
+        echo '<th>QuoteID</th>';
+        echo '<th>LeadID</th>';
+        echo '<th>Number of Windows</th>';  
+        echo '<th>Number of Doors</th>';
+        echo '<th>Window Type</th>';
+        echo '<th>Door Type</th>';
+        echo '<th>Cost</th>';
+        echo '<th>Forename</th>';
+        echo '<th>Surname</th>';
+        echo '<th>Notes</th>';
+        echo '<th>Delete</th>';
+        echo '</tr>';  
         while($row = mysqli_fetch_assoc($result)) {
-          echo "<tr>";
-          echo "<td>" . $row["id"] . "</td>";
-          echo "<td>" . $row["LeadID"] . "</td>";
-          echo "<td>" . $row["Num_Of_Windows"] . "</td>";
-          echo "<td>" . $row["Num_Of_Doors"] . "</td>";
-          echo "<td>" . $row["windowType"] . "</td>";
-          echo "<td>" . $row["doorType"] . "</td>";
-          echo "<td>£ " . $row["Cost"] . "</td>";
-          echo "<td>" . $row["firstName"] . "</td>";
-          echo "<td>" . $row["lastName"] . "</td>";
-          echo "<td>" . $row["notes"] . "</td>";
-          echo "</tr>";
+          echo '<tr>';
+          echo '<td>' . $row["ID"] . '</td>';
+          echo '<td>' . $row["LeadID"] . '</td>';
+          echo '<td>' . $row["Num_Of_Windows"] . '</td>';
+          echo '<td>' . $row["Num_Of_Doors"] . '</td>';
+          echo '<td>' . $row["windowType"] . '</td>';
+          echo '<td>' . $row["doorType"] . '</td>';
+          echo '<td>£ ' . $row["Cost"] . '</td>';
+          echo '<td>' . $row["firstName"] . '</td>';
+          echo '<td>' . $row["lastName"] . '</td>';
+          echo '<td>' . $row["notes"] . '</td>';
+          echo '<td><a href="../pages/AddData/deleteQuote.php?ID=' . $row["ID"] . '">DELETE</a></td>';
+          echo '</tr>';
         }
-        echo "</table>";
+        echo '</table>';
       } else {
         echo "0 Results";
       }

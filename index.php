@@ -15,7 +15,7 @@ $data2 = $result2->fetch_assoc();
 
 # List last 5 of Qoutes & sales
 
-$quoteSQL = 'SELECT quotes.ID,quotes.cost, customer.firstName,customer.lastName  FROM quotes, customer WHERE quotes.customerID = customer.id';
+$quoteSQL = 'SELECT quotes.ID,quotes.cost, customer.firstName,customer.lastName  FROM quotes, customer ORDER BY quotes.ID DESC LIMIT 5';
 $result3 = $conn->query($quoteSQL);
 
 $saleSQL = 'SELECT sales.id, job_type.type, sale_completed.completed FROM sales, job_type,sale_completed WHERE sales.job_type_id = job_type.id AND sales.sale_completed = sale_completed.id AND sale_completed=3;';
